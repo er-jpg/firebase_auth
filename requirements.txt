@@ -1,0 +1,2 @@
+pyrebase
+python_dotenv
