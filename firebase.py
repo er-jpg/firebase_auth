@@ -48,7 +48,7 @@ def create_account(context, username, password):
     Método de criação de usuário dentro do firebase.
     """
     context.create_user_with_email_and_password(username, password)
-    print("Conta criada, favor confirmar o email")
+    print('Conta criada, favor confirmar o email na aplicação, dentro do menu "2".')
 
 
 def get_info(context_auth, token, username):

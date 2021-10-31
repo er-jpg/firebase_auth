@@ -11,7 +11,7 @@ Firebase PUCPR é um programa de autenticação em dois fatores dentro do fireba
 
 Clone esse repositório do github e altere o `.env.example` para `.env` com as suas credenciais dentro do Firebase e do SMTP do Google correspondentes.
 
-Assim
+Assim, em um terminal
 
 ```bash
 git clone https://github.com/er-jpg/firebase_auth
@@ -32,3 +32,9 @@ python main.py
 ```
 
 Assim você pode realizar as ações da aplicação.
+
+Também é interessante ver o log de logins de usuários na aplicação, utilizando o superuser
+
+```bash
+sudo cat acesso.txt
+```

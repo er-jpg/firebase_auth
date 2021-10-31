@@ -40,16 +40,17 @@ def user_option(context_auth):
         "Digite 1 para cadastro de usuário, 2 para confirmação de email e 3 para autenticação: "
     )
 
-    user = input("Digite seu e-mail: ")
+    email = input("Digite seu e-mail: ")
     password = input("Digite sua senha, com pelo menos 6 caracteres: ")
 
     if opt == "1":
-        firebase.create_account(context_auth, user, password)
+        firebase.create_account(context_auth, email, password)
     elif opt == "2":
-        firebase.sign_in(context_auth, user, password)
+        firebase.sign_in(context_auth, email, password)
     elif opt == "3":
-        firebase.sign_in(context_auth, user, password)
-        local_auth.validate(user)
+        status = firebase.sign_in(context_auth, email, password)
+        if status[0]:
+            local_auth.validate(email)
     else:
         print("Favor selecionar valor.")
 
