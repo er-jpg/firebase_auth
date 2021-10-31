@@ -1,9 +1,21 @@
 #!/usr/bin/env python3
 """
-Module Docstring
+Realização de Atividade Somativa
+Etapa 4 - Verificação dois fatores para o firebase.
+
+Equipe 22
+* Bruno Saragosa da Silva
+* Josiane Kozien
+* Roger dos Santos Neves
+* Thatiane Thais e Silva
 """
 
-__author__ = "Bruno Saragosa da Silva"
+__author__ = [
+    "Bruno Saragosa da Silva",
+    "Josiane Kozien",
+    "Roger dos Santos Neves",
+    "Thatiane Thais e Silva",
+]
 __version__ = "0.1.0"
 
 import firebase
@@ -11,6 +23,9 @@ import local_auth
 
 
 def main():
+    """
+    Função principal do sistema
+    """
     ctx = firebase.connect()
     auth = firebase.connect_auth(ctx)
 
@@ -18,6 +33,9 @@ def main():
 
 
 def user_option(context_auth):
+    """
+    Função que realiza a interface do usuário para a autenticação da aplicação
+    """
     opt = input(
         "Digite 1 para cadastro de usuário, 2 para confirmação de email e 3 para autenticação: "
     )

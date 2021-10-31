@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+"""
+Módulo auxiliar para o envio de emails
+"""
+
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -13,6 +18,9 @@ password = os.getenv("SMTP_PASSWORD")
 
 
 def send_email(mail_to, verification_code):
+    """
+    Método que realiza o envio de um email.
+    """
     mail_from = username
     mail_subject = "Segurança da Tecnologia da Informação"
     mail_body = "Seu código de verificação é: " + str(verification_code) + "."

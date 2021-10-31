@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+"""
+Módulo auxiliar para o contexto de conexão e comunicação com o firebase dentro da aplicação
+"""
+
 from main import user_option
 import pyrebase
 import os
@@ -17,22 +22,39 @@ firebaseConfig = {
 
 
 def connect():
+    """
+    Método responsável por criar o contexto de conexão e comunicação com o firebase.
+    """
     return pyrebase.initialize_app(firebaseConfig)
 
 
 def connect_auth(ctx):
+    """
+    Método de autenticação da aplicação com o firebase usando as credenciais de configuração.
+    Retorna um contexto autenticado para manipulação de usuários.
+    """
     return ctx.auth()
 
 
 def connect_db(ctx):
+    """
+    Método de conexão da aplicação com os dados dentro do firebase.
+    """
     return ctx.database()
 
 
 def create_account(context, username, password):
+    """
+    Método de criação de usuário dentro do firebase.
+    """
     context.create_user_with_email_and_password(username, password)
+    print("Conta criada, favor confirmar o email")
 
 
 def get_info(context_auth, token, username):
+    """
+    Método que retorna as informações se o usuário existe ou não dentro do firebase.
+    """
     return next(
         (
             u
@@ -44,6 +66,9 @@ def get_info(context_auth, token, username):
 
 
 def sign_in(context, username, password):
+    """
+    Método que realiza login na aplicação, validando se o mesmo possui email confirmado.
+    """
     status = context.sign_in_with_email_and_password(username, password)
     user = get_info(context, status["idToken"], username)
     if user.get("emailVerified", False):
@@ -55,4 +80,7 @@ def sign_in(context, username, password):
 
 
 def verify_email_token(context, user_id):
+    """
+    Método que realiza o envio de email de confirmação para o usuário
+    """
     context.send_email_verification(user_id)
